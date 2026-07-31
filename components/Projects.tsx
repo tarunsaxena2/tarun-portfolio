@@ -33,8 +33,11 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="max-w-5xl mx-auto px-6 py-20">
-      <h2 className="text-3xl font-bold text-foreground mb-10">Projects</h2>
+    <section id="projects" className="max-w-5xl mx-auto px-6 py-24">
+      <h2 className="text-3xl sm:text-4xl font-extrabold mb-2">
+        <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Projects</span>
+      </h2>
+      <p className="text-body mb-10">A few things I&apos;ve built recently</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {projects.map((project) => (
           <ProjectCard key={project.title} {...project} />
