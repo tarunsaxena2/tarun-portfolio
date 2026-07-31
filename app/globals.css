@@ -15,16 +15,38 @@
 
 body {
   background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
   background-image:
     radial-gradient(at 20% 0%, rgba(59, 130, 246, 0.25) 0px, transparent 50%),
     radial-gradient(at 80% 0%, rgba(168, 85, 247, 0.25) 0px, transparent 50%),
     radial-gradient(at 0% 50%, rgba(236, 72, 153, 0.15) 0px, transparent 50%),
     radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.2) 0px, transparent 50%),
     radial-gradient(at 0% 100%, rgba(168, 85, 247, 0.15) 0px, transparent 50%);
-  background-attachment: fixed;
-  color: var(--foreground);
-  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
-  min-height: 100vh;
+  background-size: 200% 200%;
+  animation: meshMove 20s ease-in-out infinite;
+}
+
+@keyframes meshMove {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
 }
 
 ::selection {

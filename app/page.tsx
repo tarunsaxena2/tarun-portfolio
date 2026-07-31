@@ -1,12 +1,10 @@
 ﻿"use client";
 import { motion } from "framer-motion";
-import { Mail, FileDown, Link as LinkIcon } from "lucide-react";
+import { Mail, Link as LinkIcon } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="relative flex flex-col items-center justify-center overflow-hidden bg-background text-foreground px-6 py-36 min-h-[85vh]">
-      <div className="absolute top-10 left-1/4 w-72 h-72 bg-blue-600/30 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-purple-600/30 rounded-full blur-3xl pointer-events-none"></div>
+    <div className="relative flex flex-col items-center justify-center overflow-hidden px-6 py-36 min-h-[85vh]">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:48px_48px] opacity-20 pointer-events-none"></div>
 
       <motion.div
@@ -29,9 +27,6 @@ export default function Home() {
         <div className="flex flex-col sm:flex-row gap-4 mt-4">
           <a href="/contact" className="flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium shadow-lg shadow-blue-500/30 hover:scale-105 transition">
             <Mail size={18} /> Contact Me
-          </a>
-          <a href="/resume.pdf" className="flex items-center gap-2 px-6 py-3 rounded-full border border-border text-foreground font-medium hover:bg-card hover:border-blue-500/50 transition">
-            <FileDown size={18} /> Resume
           </a>
           <a href="https://github.com/tarunsaxena2" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border border-border text-foreground font-medium hover:bg-card hover:border-blue-500/50 transition">
             <LinkIcon size={18} /> GitHub
