@@ -1,24 +1,28 @@
 ﻿"use client";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home } from "lucide-react";
+import { Home, Menu, X } from "lucide-react";
 
 const links = [
   { href: "/", label: "Home", icon: Home },
   { href: "/about", label: "About" },
   { href: "/projects", label: "Projects" },
   { href: "/skills", label: "Skills" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
 
   return (
     <nav className="sticky top-0 z-50 w-full bg-background/70 backdrop-blur-lg border-b border-border">
       <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="text-lg font-extrabold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+        <Link href="/" className="text-lg font-extrabold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent" onClick={() => setOpen(false)}>
           Tarun Saxena
         </Link>
+
         <div className="hidden sm:flex items-center gap-8 text-sm font-medium">
           {links.map((link) => {
             const Icon = link.icon;
@@ -38,11 +42,38 @@ export default function Navbar() {
               </Link>
             );
           })}
-          <Link href="/contact" className="px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:opacity-90 transition">
-            Contact
-          </Link>
         </div>
+
+        <button
+          onClick={() => setOpen(!open)}
+          className="sm:hidden text-foreground p-2"
+          aria-label="Toggle menu"
+        >
+          {open ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
+
+      {open && (
+        <div className="sm:hidden bg-card border-t border-border px-6 py-4 flex flex-col gap-4">
+          {links.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className={
+                  isActive
+                    ? "text-foreground font-semibold"
+                    : "text-body hover:text-foreground transition"
+                }
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+        </div>
+      )}
     </nav>
   );
 }
